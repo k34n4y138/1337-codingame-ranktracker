@@ -6,7 +6,7 @@
 #    By: zmoumen <zmoumen@student.1337.ma>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/23 14:46:51 by zmoumen           #+#    #+#              #
-#    Updated: 2023/12/23 14:58:03 by zmoumen          ###   ########.fr        #
+#    Updated: 2023/12/23 17:08:59 by zmoumen          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ GLOBALPYTHON = /usr/bin/python3
 all: run
 
 $(ENVFOLDER):
-	@ ($(GLOBALPYTHON) -m venv $(ENVFOLDER)) || (echo "you don't have python3-venv installed"; exit 1;")
+	@ ($(GLOBALPYTHON) -m venv $(ENVFOLDER)) || (echo "you don't have python3-venv installed"; exit 1;)
 	$(ENVPYTHON) -m pip install --upgrade pip
 	$(ENVPYTHON) -m pip install -r requirements.txt
 
