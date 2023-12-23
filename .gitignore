@@ -1,0 +1,4 @@
+ranking-*.txt
+*.sqlite
+.venv
+.vscode
