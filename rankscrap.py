@@ -6,7 +6,7 @@
 #    By: zmoumen <zmoumen@student.1337.ma>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/23 14:58:28 by zmoumen           #+#    #+#              #
-#    Updated: 2023/12/27 16:02:09 by zmoumen          ###   ########.fr        #
+#    Updated: 2023/12/27 16:07:02 by zmoumen          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -112,13 +112,8 @@ def routine():
     save_rankings_into_file(ranking)
     
 
-import time
 
 if __name__ == "__main__":
-    HOURS = 4
-    while True:
-        routine()
-        print(f"Sleeping for {HOURS} hours")
-        time.sleep(HOURS * 3600)
+    routine() # routine will be handled by crontab    
 
 DATABASE.close()
