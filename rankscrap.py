@@ -6,7 +6,7 @@
 #    By: zmoumen <zmoumen@student.1337.ma>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/23 14:58:28 by zmoumen           #+#    #+#              #
-#    Updated: 2023/12/27 16:00:41 by zmoumen          ###   ########.fr        #
+#    Updated: 2023/12/27 16:02:09 by zmoumen          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,7 +85,7 @@ def save_rankings_into_db(rankings):
     for ranking in rankings:
         user_id = save_user_into_db(ranking['user'])
         c.execute("INSERT INTO ranking (scrap_time, uuid, user_id, creation_time, percentage, score, league, global_rank, school_rank, language) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", (ranking['ranking']['scrap_time'], ranking['ranking']['uuid'], user_id, ranking['ranking']['creation_time'], ranking['ranking']['percentage'], ranking['ranking']['score'], ranking['ranking']['league'], ranking['ranking']['global_rank'], ranking['ranking']['school_rank'], ranking['ranking']['language']))
-
+    DATABASE.commit()
 def save_rankings_into_file(rankings):
     date = datetime.datetime.now().strftime("%Y-%m-%d-%H:%M:%S")
     fname = "ranking-" + date + ".txt"
@@ -121,5 +121,4 @@ if __name__ == "__main__":
         print(f"Sleeping for {HOURS} hours")
         time.sleep(HOURS * 3600)
 
-DATABASE.commit()
 DATABASE.close()
