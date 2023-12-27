@@ -6,7 +6,7 @@
 #    By: zmoumen <zmoumen@student.1337.ma>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/23 14:58:28 by zmoumen           #+#    #+#              #
-#    Updated: 2023/12/27 15:55:42 by zmoumen          ###   ########.fr        #
+#    Updated: 2023/12/27 15:59:38 by zmoumen          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -103,7 +103,7 @@ def save_rankings_into_file(rankings):
         line += fixate_cellwidth("stable" if ranking['ranking']['percentage'] >= 100 else f"PROGRESSING![{ranking['ranking']['percentage']}%]") + '|'
         file.write(line + "\n" + splitter + "\n")
     file.close()
-    os.system(f"open {fname}")
+    # os.system(f"open {fname}")
     print("created : " + fname)
 
 def routine():
@@ -123,3 +123,6 @@ if __name__ == "__main__":
 
 DATABASE.commit()
 DATABASE.close()
+
+
+nohup python3 rankscrap.py 2>&1 > logs.txt &
