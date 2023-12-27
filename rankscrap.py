@@ -6,7 +6,7 @@
 #    By: zmoumen <zmoumen@student.1337.ma>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/23 14:58:28 by zmoumen           #+#    #+#              #
-#    Updated: 2023/12/25 17:09:20 by zmoumen          ###   ########.fr        #
+#    Updated: 2023/12/27 15:03:23 by zmoumen          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -106,12 +106,22 @@ def save_rankings_into_file(rankings):
     os.system(f"open {fname}")
     print("DONE!")
 
-if __name__ == "__main__":
+def routine():
     ranking = fetch_ranking()
     for rank in ranking:
         print(rank)
-    save_rankings_into_file(ranking)
+    # save_rankings_into_file(ranking)
     save_rankings_into_db(ranking)
+    
+
+import time
+
+if __name__ == "__main__":
+    HOURS = 4
+    while True:
+        routine()
+        print(f"Sleeping for {HOURS} hours")
+        time.sleep(HOURS * 3600)
 
 DATABASE.commit()
 DATABASE.close()
