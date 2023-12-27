@@ -6,7 +6,7 @@
 #    By: zmoumen <zmoumen@student.1337.ma>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/23 14:58:28 by zmoumen           #+#    #+#              #
-#    Updated: 2023/12/27 15:03:23 by zmoumen          ###   ########.fr        #
+#    Updated: 2023/12/27 15:55:42 by zmoumen          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -104,14 +104,12 @@ def save_rankings_into_file(rankings):
         file.write(line + "\n" + splitter + "\n")
     file.close()
     os.system(f"open {fname}")
-    print("DONE!")
+    print("created : " + fname)
 
 def routine():
     ranking = fetch_ranking()
-    for rank in ranking:
-        print(rank)
-    # save_rankings_into_file(ranking)
     save_rankings_into_db(ranking)
+    save_rankings_into_file(ranking)
     
 
 import time
