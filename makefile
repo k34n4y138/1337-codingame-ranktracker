@@ -6,7 +6,7 @@
 #    By: zmoumen <zmoumen@student.1337.ma>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/23 14:46:51 by zmoumen           #+#    #+#              #
-#    Updated: 2023/12/23 17:08:59 by zmoumen          ###   ########.fr        #
+#    Updated: 2023/12/25 17:04:30 by zmoumen          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,9 +24,12 @@ $(ENVFOLDER):
 	$(ENVPYTHON) -m pip install --upgrade pip
 	$(ENVPYTHON) -m pip install -r requirements.txt
 
+database.sqlite: $(ENVFOLDER)
+	$(ENVPYTHON) db_setup.py
 
-run: $(ENVFOLDER)
+run: $(ENVFOLDER) database.sqlite
 	$(ENVPYTHON) rankscrap.py
+
 
 freeze:
 	@if [ ! -d $(ENVFOLDER) ]; then;echo "can't run freeze without virtual env";exit 1;fi
@@ -36,4 +39,4 @@ clean:
 	rm -rf $(ENVFOLDER)
 
 rm-datafiles:
-	rm -rf ranking-*.txt
+	rm -rf ranking-*.txt database.sqlite
